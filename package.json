@@ -1,0 +1,26 @@
+{
+  "name": "rails_mono_repo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "up": "docker-compose -f docker-compose-dev.yml up --build -d",
+    "down": "docker-compose -f docker-compose-dev.yml down",
+    "logs": "docker-compose -f docker-compose-dev.yml logs -f",
+    "test": "sh scripts/test.sh",
+    "test server": "sh scripts/test.sh server",
+    "test e2e": "sh scripts/test.sh e2e"
+  },
+  "author": "matthew-gordon <m.gordon5525@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "cypress": "^3.1.5",
+    "husky": "^1.3.1",
+    "prettier": "^1.16.4",
+    "pretty-quick": "^1.10.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  }
+}
