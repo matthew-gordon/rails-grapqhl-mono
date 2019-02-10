@@ -22,6 +22,20 @@ services:
     volumes:
       - ./services/api:/app
 
+  client:
+    build:
+      context: ./services/client
+      dockerfile: Dockerfile-dev
+    volumes:
+      - "./services/client:/usr/src/app"
+      - "/usr/src/app/node_modules"
+    ports:
+      - 3001:8080
+    environment:
+      NODE_ENV: development
+    depends_on:
+      - api
+
   nginx:
     build:
       context: ./services/nginx
